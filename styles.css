@@ -32,3 +32,7 @@
 .shooter {
     background-color: cadetblue;
 }
+
+.bullet {
+  background-color: red;
+}

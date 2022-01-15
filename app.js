@@ -38,9 +38,6 @@ drawShooter()
 // moving elements on page
 
 function moveShooter(e) {
-
-
-  // console.log(currentPosition)
   console.log(e)
   switch (e.key) {
     case 'ArrowLeft':
@@ -53,14 +50,34 @@ function moveShooter(e) {
       break
     case 'ArrowRight':
       console.log('I pressed the right arrow :P')
-      if (shooterIndex < 111) {
+      if (shooterIndex < 125) {
         squares[shooterIndex].classList.remove('shooter')
-        squares[shooterIndex - 1].classList.add('shooter')
+        squares[shooterIndex + 1].classList.add('shooter')
         shooterIndex += 1
       }
       break
-
-
+    case ' ':
+      console.log('I pressed the space bar :P')
+      squares[shooterIndex - (width - 1)].classList.add('bullet')
   }
 }
+
+const bulletTravel = setInterval(() => {
+
+  squares.forEach((square) => {
+    if (square.classList.contains('bullet', 'alien')) {
+      squares[shooterIndex].classList.remove('bullet', 'aliens')
+    } 
+    if (square.classList.contains('bullet')) {
+      const bulletIndex = squares.indexOf(square)
+      if (bulletIndex > width) {
+        squares[bulletIndex].classList.remove('bullet')
+        squares[bulletIndex - (width - 1)].classList.add('bullet')
+      } else {
+        squares[bulletIndex].classList.remove('bullet')
+      }
+    }
+  })
+}, 1000)
+
 document.addEventListener('keydown', moveShooter)
