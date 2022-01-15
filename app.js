@@ -5,7 +5,8 @@ const myGrid = document.querySelector('.grid')
 const width = 15
 const height = 15
 
-
+let score = 0 
+const scoreBoard = document.querySelector('#score')
 
 for (let i = 0; i < width * height; i++) {
   const square = document.createElement('div')
@@ -21,7 +22,7 @@ console.log(squares)
 
 function drawAliens() {
   for (let i = 0; i < aliens.length; i++) {
-    squares[aliens[i]].classList.add('invader')
+    squares[aliens[i]].classList.add('alien')
   }
 }
 
@@ -65,9 +66,12 @@ function moveShooter(e) {
 const bulletTravel = setInterval(() => {
 
   squares.forEach((square) => {
-    if (square.classList.contains('bullet', 'alien')) {
-      squares[shooterIndex].classList.remove('bullet', 'aliens')
-    } 
+    if (square.classList.contains('bullet') && square.classList.contains('alien')) {
+      square.classList.remove('bullet')
+      square.classList.remove('alien')
+      score += 10
+      scoreBoard.textContent = score
+    }
     if (square.classList.contains('bullet')) {
       const bulletIndex = squares.indexOf(square)
       if (bulletIndex > width) {
@@ -81,3 +85,12 @@ const bulletTravel = setInterval(() => {
 }, 1000)
 
 document.addEventListener('keydown', moveShooter)
+
+const moveAliens = setInterval(() => {
+  const left = aliens[0] % width === 0
+  const right = aliens[aliens.length - 1] % width === width - 1
+
+  for (let i = 0; i < aliens.length; i++) {
+    aliens[i] += 1
+  }
+}, 600)
