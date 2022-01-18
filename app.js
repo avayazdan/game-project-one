@@ -63,6 +63,15 @@ function moveShooter(e) {
   }
 }
 
+document.onkeypress = function (e) {
+  e = e || window.event;
+  var charCode = e.keyCode || e.which
+  if (charCode === 32) {
+    e.preventDefault()
+    return false
+  }
+}
+
 const bulletTravel = setInterval(() => {
 
   squares.forEach((square) => {
