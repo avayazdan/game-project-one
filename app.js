@@ -5,7 +5,7 @@ const myGrid = document.querySelector('.grid')
 const width = 15
 const height = 15
 
-let score = 0 
+let score = 0
 const scoreBoard = document.querySelector('#score')
 
 for (let i = 0; i < width * height; i++) {
@@ -14,7 +14,7 @@ for (let i = 0; i < width * height; i++) {
   myGrid.appendChild(square)
 }
 
-const aliens = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22]
+const aliens = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26]
 const squares = Array.from(document.querySelectorAll('.grid div'))
 console.log(squares)
 
@@ -28,7 +28,7 @@ function drawAliens() {
 
 drawAliens()
 
-let shooterIndex = 118
+let shooterIndex = 132
 
 function drawShooter() {
   squares[shooterIndex].classList.add('shooter')
@@ -86,11 +86,8 @@ const bulletTravel = setInterval(() => {
 
 document.addEventListener('keydown', moveShooter)
 
-const moveAliens = setInterval(() => {
-  const left = aliens[0] % width === 0
-  const right = aliens[aliens.length - 1] % width === width - 1
-
-  for (let i = 0; i < aliens.length; i++) {
-    aliens[i] += 1
-  }
-}, 600)
+// const moveAliens = setInterval(() => {
+//   aliensMove = document.getElementsByClassName('aliens')[0]
+//   aliensMove.style.top = parseInt(aliensMove.style.top) + 1 + 'px'
+// }
+// }, 600)
