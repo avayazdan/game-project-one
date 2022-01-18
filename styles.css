@@ -18,14 +18,17 @@
 
 .grid div {
     width: 70px;
-    height: 70px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+/* Start https://www.cursors-4u.com */ * {cursor: url(https://cur.cursors-4u.net/cursors/cur-9/cur815.ani), url(https://cur.cursors-4u.net/cursors/cur-9/cur815.png), auto !important;} /* End https://www.cursors-4u.com */
 body {
-  background-image: url('background.gif')
+  background-image: url('background-image-galaxy.gif');
+  font-family: 'Bungee Outline', cursive;
+  font-size: 25px;
 }
 
 h1 {
@@ -33,13 +36,14 @@ text-align: center;
 }
 
 #score {
-  color:seashell;
+  color: silver;
 }
 
 .score {
   color:white;
   text-align: center;
   padding-bottom: 20px;
+  color: green;
 }
 .alien {
     background-image: url('alienpurple.png');
@@ -48,10 +52,12 @@ text-align: center;
 }
 
 .shooter {
-    background-image: url('Daco_34602_70x96.png');
+    background-image: url('almir-sharifullin-1st-spaceship_60x60.gif');
 
 }
 
 .bullet {
-  background-color: red;
+  background-image: url('Daco_4693187_74x119.png');
 }
+
+

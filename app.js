@@ -14,7 +14,7 @@ for (let i = 0; i < width * height; i++) {
   myGrid.appendChild(square)
 }
 
-const aliens = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26]
+const aliens = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26,28,30,32,34,36,38,40]
 const squares = Array.from(document.querySelectorAll('.grid div'))
 console.log(squares)
 
@@ -28,7 +28,7 @@ function drawAliens() {
 
 drawAliens()
 
-let shooterIndex = 132
+let shooterIndex = 188
 
 function drawShooter() {
   squares[shooterIndex].classList.add('shooter')
@@ -43,7 +43,7 @@ function moveShooter(e) {
   switch (e.key) {
     case 'ArrowLeft':
       console.log('I pressed the left arrow :P')
-      if (shooterIndex > 112) {
+      if (shooterIndex > 182) {
         squares[shooterIndex].classList.remove('shooter')
         squares[shooterIndex - 1].classList.add('shooter')
         shooterIndex -= 1
@@ -51,7 +51,7 @@ function moveShooter(e) {
       break
     case 'ArrowRight':
       console.log('I pressed the right arrow :P')
-      if (shooterIndex < 125) {
+      if (shooterIndex < 195) {
         squares[shooterIndex].classList.remove('shooter')
         squares[shooterIndex + 1].classList.add('shooter')
         shooterIndex += 1
@@ -73,7 +73,6 @@ document.onkeypress = function (e) {
 }
 
 const bulletTravel = setInterval(() => {
-
   squares.forEach((square) => {
     if (square.classList.contains('bullet') && square.classList.contains('alien')) {
       square.classList.remove('bullet')
@@ -92,6 +91,7 @@ const bulletTravel = setInterval(() => {
     }
   })
 }, 1000)
+
 
 document.addEventListener('keydown', moveShooter)
 
