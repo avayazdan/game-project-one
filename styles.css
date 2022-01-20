@@ -45,10 +45,15 @@ text-align: center;
   padding-bottom: 20px;
   color: green;
 }
+
 .alien {
     background-image: url('alienpurple.png');
     width: 50px;
     height: 50px;
+}
+
+.blasted {
+  background-image: red;
 }
 
 .shooter {
