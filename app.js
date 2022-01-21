@@ -28,13 +28,7 @@ window.addEventListener('keyup', ev => {
   }
 }
 )
-// game end function
-
-function gameOver() {
-  clearInterval(interval)
-  window.alert('GAME OVER')
-}
-
+// window.alert('GAME OVER')
 // game initialise 
 
 function init() {
@@ -183,4 +177,16 @@ function init() {
 
 
   document.addEventListener('keydown', moveShooter)
+}
+
+// game end function
+
+function gameOver() {
+  clearInterval(interval)
+  const y = document.getElementById('gameover-screen')
+  if (y.style.display === 'none') {
+    y.style.display = 'block'
+  } else {
+    y.style.display = 'none'
+  }
 }

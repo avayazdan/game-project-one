@@ -4,7 +4,7 @@
     height: 400px;
     position: absolute; 
     top: 370px;
-    left: 580px;
+    left: 540px;
 
 }
 
@@ -28,6 +28,27 @@
   
 }
 
+#gameover-screen {
+  margin: auto;
+  margin-top: 50px;
+  position: relative;
+  background-color: black;
+  color: rgb(22, 164, 27);
+  text-align: center;
+  border: 8px solid;
+  border-radius: 10px;
+  box-shadow: 0 1px 32px white;
+  /* transform: rotate(0) scale(0); */
+  animation: grow-and-shrink 700ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  display: flex;
+  position: absolute; 
+  top: 470px;
+  left: 680px;
+  display: none;
+}
+
 @keyframes grow-and-shrink {
   0% {
     transform: scale(1);
@@ -39,12 +60,6 @@
     transform: scale(1);
   }
 }
-
-/* @keyframes boom {
-  100% {
-    transform: rotate(1080deg) scale(1);
-  }
-} */
 
 .h2 {
   display: flex;
@@ -87,9 +102,10 @@ h1 {
     align-items: center;
 }
 
-/* Start https://www.cursors-4u.com */ * {cursor: url(https://cur.cursors-4u.net/cursors/cur-9/cur815.ani), url(https://cur.cursors-4u.net/cursors/cur-9/cur815.png), auto !important;} /* End https://www.cursors-4u.com */
+* {cursor: url(https://cur.cursors-4u.net/cursors/cur-9/cur815.ani), url(https://cur.cursors-4u.net/cursors/cur-9/cur815.png), auto !important;} 
+
 body {
-  background-image: url('background-image-galaxy.gif');
+  background-image: url('background.gif');
   font-family: 'Bungee Outline', cursive;
   font-size: 25px;
   margin: 0px;
@@ -105,7 +121,7 @@ body {
   text-align: center;
   padding-bottom: 20px;
   color: green;
-  font-size: larger;
+  font-size: 40px;
 }
 
 .alien {
@@ -119,10 +135,10 @@ body {
 }
 
 .shooter {
-    background-image: url('almir-sharifullin-1st-spaceship_60x60.gif');
+    background-image: url('shooter.gif');
 
 }
 
 .bullet {
-  background-image: url('pngegg.png');
+  background-image: url('skullbullet.png');
 }
