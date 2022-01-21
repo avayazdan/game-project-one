@@ -7,14 +7,26 @@ let direction = 1
 let moveRight = true
 const audioShoot = new Audio('audio/shoot.mp3')
 const gameOverSound = new Audio('audio/gameover.mp3')
+const gameIntro = new Audio('audio/intro.mp3')
+const mainSound = new Audio('audio/loop.mp3')
+const bruhSound = new Audio('audio/bruh.mp3')
 let score = 0
 let interval
 let shooterIndex = 188
 let intervalSpeed = 500
 const scoreBoard = document.querySelector('#score')
 
+// volume settings
+
+audioShoot.volume = 0.1
+mainSound.volume = 0.4
+bruhSound.volume = 1
 
 // game start screen function
+
+document.body.addEventListener('mousemove', function () {
+  mainSound.play()
+})
 
 window.addEventListener('keyup', ev => {
   if (ev.keyCode === 38) {
@@ -93,6 +105,7 @@ function init() {
     drawAliens()
     if (aliens.some((alien) => alien > 182)) {
       gameOverSound.play()
+      bruhSound.play()
       gameOver()
       gameOverSound.addEventListener('ended', function () {
         gameOver()
@@ -190,3 +203,13 @@ function gameOver() {
     y.style.display = 'none'
   }
 }
+
+// document.getElementsByID('gameover-screen').addEventListener('mouseover', function () {
+//   this.mainSound.pause()
+// })
+
+// set time out function to wait a few seconds and then reinit game , write condition to stop upkey appear ,pause and start game
+// function audioStop() {
+//   this.mainSound.pause()
+//   mainSound.currentTime = 0
+// }

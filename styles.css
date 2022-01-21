@@ -1,10 +1,11 @@
+* {cursor: url(https://cur.cursors-4u.net/cursors/cur-9/cur815.ani), url(https://cur.cursors-4u.net/cursors/cur-9/cur815.png), auto !important;} 
 
 .container-start {
     width: 300x;
     height: 400px;
     position: absolute; 
     top: 370px;
-    left: 540px;
+    left: 410px;
 
 }
 
@@ -20,7 +21,7 @@
   border: 8px solid;
   border-radius: 10px;
   box-shadow: 0 1px 32px white;
-  /* transform: rotate(0) scale(0); */
+  transform: rotate(0) scale(0);
   animation: grow-and-shrink 700ms;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
@@ -38,14 +39,14 @@
   border: 8px solid;
   border-radius: 10px;
   box-shadow: 0 1px 32px white;
-  /* transform: rotate(0) scale(0); */
+  transform: rotate(0) scale(0);
   animation: grow-and-shrink 700ms;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
   display: flex;
   position: absolute; 
   top: 470px;
-  left: 680px;
+  left: 580px;
   display: none;
 }
 
@@ -92,6 +93,7 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    box-shadow: 0 1px 32px purple;
 }
 
 .grid div {
@@ -101,8 +103,6 @@ h1 {
     justify-content: center;
     align-items: center;
 }
-
-* {cursor: url(https://cur.cursors-4u.net/cursors/cur-9/cur815.ani), url(https://cur.cursors-4u.net/cursors/cur-9/cur815.png), auto !important;} 
 
 body {
   background-image: url('background.gif');
@@ -125,7 +125,7 @@ body {
 }
 
 .alien {
-    background-image: url('alienpurple.png');
+    background-image: url('/images/alienpurple.png');
     width: 50px;
     height: 50px;
 }
@@ -140,5 +140,5 @@ body {
 }
 
 .bullet {
-  background-image: url('skullbullet.png');
+  background-image: url('/images/skullbullet.png');
 }
