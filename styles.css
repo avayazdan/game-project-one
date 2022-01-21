@@ -3,7 +3,7 @@
     width: 300x;
     height: 400px;
     position: absolute; 
-    top: 320px;
+    top: 370px;
     left: 580px;
 
 }
@@ -20,18 +20,31 @@
   border: 8px solid;
   border-radius: 10px;
   box-shadow: 0 1px 32px white;
-  transform: rotate(0) scale(0);
-  animation: boom 1s linear;
-  animation-fill-mode: forwards;
+  /* transform: rotate(0) scale(0); */
+  animation: grow-and-shrink 700ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
   display: flex;
   
 }
 
-@keyframes boom {
+@keyframes grow-and-shrink {
+  0% {
+    transform: scale(1);
+  }
+  0% {
+    transform: scale(1.5);
+  }
+  0% {
+    transform: scale(1);
+  }
+}
+
+/* @keyframes boom {
   100% {
     transform: rotate(1080deg) scale(1);
   }
-}
+} */
 
 .h2 {
   display: flex;
