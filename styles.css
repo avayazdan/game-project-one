@@ -1,20 +1,22 @@
-* {cursor: url(https://cur.cursors-4u.net/cursors/cur-9/cur815.ani), url(https://cur.cursors-4u.net/cursors/cur-9/cur815.png), auto !important;} 
+* {
+  cursor: url(https://cur.cursors-4u.net/cursors/cur-9/cur815.ani),
+    url(https://cur.cursors-4u.net/cursors/cur-9/cur815.png), auto !important;
+}
 
 .container-start {
-    width: 300x;
-    height: 400px;
-    position: absolute; 
-    top: 370px;
-    left: 410px;
-
+  width: 300x;
+  height: 400px;
+  position: absolute;
+  top: 370px;
+  left: 410px;
 }
 
 #gamestart-screen {
   margin: auto;
   margin-top: 50px;
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 50%;
+  height: 50%;
   background-color: black;
   color: rgb(22, 164, 27);
   text-align: center;
@@ -26,7 +28,6 @@
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
   display: flex;
-  
 }
 
 #gameover-screen {
@@ -44,7 +45,7 @@
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
   display: flex;
-  position: absolute; 
+  position: absolute;
   top: 470px;
   left: 580px;
   display: none;
@@ -73,35 +74,34 @@ h2 {
   padding: 20px;
 }
 
-
 h1 {
   text-align: center;
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    align-content: space-around;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+  flex-wrap: wrap;
 }
 
 .grid {
-    width: 1000px;
-    height: 745px;
-    border: inset green 10px;
-    padding-top: 7px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    box-shadow: 0 1px 32px purple;
+  width: 1000px;
+  height: 745px;
+  border: inset green 10px;
+  padding-top: 7px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  box-shadow: 0 1px 32px purple;
 }
 
 .grid div {
-    width: 70px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 70px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 body {
@@ -117,7 +117,7 @@ body {
 }
 
 .score {
-  color:white;
+  color: white;
   text-align: center;
   padding-bottom: 20px;
   color: green;
@@ -125,9 +125,9 @@ body {
 }
 
 .alien {
-    background-image: url('/images/alienpurple.png');
-    width: 50px;
-    height: 50px;
+  background-image: url('/images/alienpurple.png');
+  width: 50px;
+  height: 50px;
 }
 
 .blasted {
@@ -135,8 +135,7 @@ body {
 }
 
 .shooter {
-    background-image: url('shooter.gif');
-
+  background-image: url('shooter.gif');
 }
 
 .bullet {
