@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Space Invaders</title>
-    <link rel="shortcut icon" type="image/jpg" href="images/aliengreen.png" />
-    <link rel="stylesheet" href="styles.css" />
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Bungee+Outline&family=Bungee+Shade&family=Covered+By+Your+Grace&family=Estonia&family=Roboto:wght@300&display=swap');
-    </style>
-  </head>
-  <body>
-    <script src="app.js" defer></script>
-    <h1><img src="images/title.png" alt="space-invaders-title" /></h1>
 
-    <audio id="audio" controls style="display: none"></audio>
-    <div id="game-info">
-      <div class="score">score: <span id="score">0</span></div>
-    </div>
-    <div class="container">
-      <div class="grid"></div>
-    </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Space Invaders</title>
+  <link rel="shortcut icon" type="image/jpg" href="images/aliengreen.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bungee+Outline&family=Bungee+Shade&family=Covered+By+Your+Grace&family=Estonia&family=Roboto:wght@300&display=swap');
+  </style>
+</head>
 
-    <div id="gameover-screen">
-      <img src="star.gif" />
-      <h2>GAME OVER</h2>
-      <img src="star.gif" />
-    </div>
-  </body>
+<body>
+  <script src="app.js" defer></script>
+  <h1><img src="images/title.png" alt="space-invaders-title" /></h1>
+
+  <audio id="audio" controls style="display: none"></audio>
+  <div id="game-info">
+    <div class="score">score: <span id="score">0</span></div>
+  </div>
+  <div class="container">
+    <div class="grid"></div>
+  </div>
+
+  <div id="gameover-screen">
+    <img src="star.gif" />
+    <h2>GAME OVER</h2>
+    <img src="star.gif" />
+  </div>
+</body>
+
 </html>

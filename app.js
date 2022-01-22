@@ -1,147 +1,144 @@
 // variables
 
-const myGrid = document.querySelector('.grid');
-const width = 14;
-const height = 15;
-let direction = 1;
-let moveRight = true;
-const audioShoot = new Audio('audio/shoot.mp3');
-const gameOverSound = new Audio('audio/gameover.mp3');
-const gameIntro = new Audio('audio/intro.mp3');
-const mainSound = new Audio('audio/loop.mp3');
-const bruhSound = new Audio('audio/bruh.mp3');
-let score = 0;
-let interval;
-let shooterIndex = 188;
-let intervalSpeed = 500;
-const scoreBoard = document.querySelector('#score');
+const myGrid = document.querySelector('.grid')
+const width = 14
+const height = 15
+let direction = 1
+let moveRight = true
+const audioShoot = new Audio('audio/shoot.mp3')
+const gameOverSound = new Audio('audio/gameover.mp3')
+const gameIntro = new Audio('audio/intro.mp3')
+const mainSound = new Audio('audio/loop.mp3')
+const bruhSound = new Audio('audio/bruh.mp3')
+let score = 0
+let interval
+let shooterIndex = 188
+let intervalSpeed = 500
+const scoreBoard = document.querySelector('#score')
 
 // volume settings
 
-audioShoot.volume = 0.1;
-mainSound.volume = 0.4;
-bruhSound.volume = 1;
+audioShoot.volume = 0.1
+mainSound.volume = 0.4
+bruhSound.volume = 1
 
 // game start screen function
 
-document.body.addEventListener('mousemove', mainAudioPlay);
+document.body.addEventListener('mousemove', mainAudioPlay)
 
 function mainAudioPlay() {
-  let audioPlaying = false;
-  mainSound.play();
-  audioPlaying = true;
+  let audioPlaying = false
+  mainSound.play()
+  audioPlaying = true
   if (audioPlaying) {
-    document.body.removeEventListener('mousemove', mainAudioPlay);
+    document.body.removeEventListener('mousemove', mainAudioPlay)
   }
-  // mainSound.loop = true)
 }
 
-const startScreen = document.createElement('div');
-startScreen.setAttribute('id', 'gamestart-screen');
+const startScreen = document.createElement('div')
+startScreen.setAttribute('id', 'gamestart-screen')
 startScreen.innerHTML = `<div class="h2">
           <img src="star.gif">
           <h2>&nbsp;PRESS &uarr; TO START GAME</h2> <img src="star.gif">
         </div>`;
 
 (function setUpStart() {
-  myGrid.appendChild(startScreen);
-})();
+  myGrid.appendChild(startScreen)
+})()
+
 
 function startGame(ev) {
   if (ev.keyCode === 38) {
-    startScreen.parentNode.removeChild(startScreen);
+    startScreen.parentNode.removeChild(startScreen)
 
-    console.log('I pressed the up arrow');
-    let gameStarted = false;
-    init();
-    gameStarted = true;
+    console.log('I pressed the up arrow')
+    let gameStarted = false
+    init()
+    gameStarted = true
     if (gameStarted) {
-      window.removeEventListener('keyup', startGame);
+      window.removeEventListener('keyup', startGame)
     }
   }
 }
-window.addEventListener('keyup', startGame);
-
-// window.alert('GAME OVER')
-// game initialise
+window.addEventListener('keyup', startGame)
 
 function init() {
   // creating grid
   for (let i = 0; i < width * height; i++) {
-    const square = document.createElement('div');
-    square.setAttribute('squareNumber', i);
-    myGrid.appendChild(square);
+    const square = document.createElement('div')
+    square.setAttribute('squareNumber', i)
+    myGrid.appendChild(square)
   }
-  const grid = document.querySelectorAll('.grid div');
-  console.log(grid);
-  const squares = Array.from(document.querySelectorAll('.grid div'));
+  const grid = document.querySelectorAll('.grid div')
+  console.log(grid)
+  const squares = Array.from(document.querySelectorAll('.grid div'))
 
-  console.log(squares);
+  console.log(squares)
 
   // adding elements onto page
 
-  const aliens = [0, 2, 4, 6, 8, 10, 12];
+  const aliens = [0, 2, 4, 6, 8, 10, 12]
 
   function drawAliens() {
-    aliens.forEach((alien) => squares[alien].classList.add('alien'));
+    aliens.forEach((alien) => squares[alien].classList.add('alien'))
   }
-  drawAliens();
+  drawAliens()
 
-  const aliensIndex = Array.from(aliens);
+  const aliensIndex = Array.from(aliens)
 
   function drawShooter() {
-    squares[shooterIndex].classList.add('shooter');
+    squares[shooterIndex].classList.add('shooter')
   }
-  drawShooter();
+  drawShooter()
 
   // moving elements on page
 
   function removeAliens() {
-    squares.forEach((square) => square.classList.remove('alien'));
+    squares.forEach((square) => square.classList.remove('alien'))
   }
 
   // removeAliens()
 
   function moveAliens() {
-    const leftEdge = aliens[0] % width === 0;
-    const rightEdge = aliens[aliens.length - 1] % width === width - 1;
-    removeAliens();
+    const leftEdge = aliens[0] % width === 0
+    const rightEdge = aliens[aliens.length - 1] % width === width - 1
+    removeAliens()
     if (moveRight && rightEdge) {
       for (let i = 0; i < aliens.length; i++) {
-        aliens[i] += width;
-        direction = -1;
-        moveRight = false;
+        aliens[i] += width
+        direction = -1
+        moveRight = false
       }
     } else if (!moveRight && leftEdge) {
       for (let i = 0; i < aliens.length; i++) {
-        aliens[i] += width;
-        direction = 1;
-        moveRight = true;
+        aliens[i] += width
+        direction = 1
+        moveRight = true
       }
     } else {
       for (let i = 0; i < aliens.length; i++) {
-        aliens[i] += direction;
+        aliens[i] += direction
       }
     }
-    drawAliens();
+    drawAliens()
     if (aliens.some((alien) => alien > 182)) {
-      gameOverSound.play();
-      bruhSound.play();
-      mainSound.pause();
+      gameOverSound.play()
+      bruhSound.play()
+      mainSound.pause()
       // gameOver()
       gameOverSound.addEventListener('ended', function () {
-        gameOver();
-      });
+        gameOver()
+      })
     }
   }
 
   function startAlienLeft() {
-    console.log('move left');
+    console.log('move left')
     interval = setInterval(function () {
-      moveAliens(-1);
-    }, intervalSpeed);
+      moveAliens(-1)
+    }, intervalSpeed)
   }
-  startAlienLeft();
+  startAlienLeft()
 
   // moving elements on page
 
@@ -153,99 +150,88 @@ function init() {
         square.classList.contains('bullet') &&
         square.classList.contains('alien')
       ) {
-        square.classList.remove('bullet');
-        square.classList.remove('alien');
-        const squareNumber = parseInt(square.getAttribute('squareNumber'));
-        aliens.splice(aliens.indexOf(squareNumber), 1);
-        console.log(aliens);
-        console.log(squareNumber);
-        score += 10;
-        scoreBoard.textContent = score;
+        square.classList.remove('bullet')
+        square.classList.remove('alien')
+        const squareNumber = parseInt(square.getAttribute('squareNumber'))
+        aliens.splice(aliens.indexOf(squareNumber), 1)
+        console.log(aliens)
+        console.log(squareNumber)
+        score += 10
+        scoreBoard.textContent = score
       }
       if (square.classList.contains('bullet')) {
-        const bulletIndex = squares.indexOf(square);
+        const bulletIndex = squares.indexOf(square)
         if (bulletIndex > width) {
-          squares[bulletIndex].classList.remove('bullet');
-          squares[bulletIndex - width].classList.add('bullet');
+          squares[bulletIndex].classList.remove('bullet')
+          squares[bulletIndex - width].classList.add('bullet')
         } else {
-          squares[bulletIndex].classList.remove('bullet');
+          squares[bulletIndex].classList.remove('bullet')
         }
       }
-    });
-  }, 1000);
+    })
+  }, 1000)
 
   // shooter
 
   function moveShooter(e) {
-    console.log(e);
+    console.log(e)
     switch (e.key) {
       case 'ArrowLeft':
-        console.log('I pressed the left arrow :P');
+        console.log('I pressed the left arrow :P')
         if (shooterIndex > 182) {
-          squares[shooterIndex].classList.remove('shooter');
-          squares[shooterIndex - 1].classList.add('shooter');
-          shooterIndex -= 1;
+          squares[shooterIndex].classList.remove('shooter')
+          squares[shooterIndex - 1].classList.add('shooter')
+          shooterIndex -= 1
         }
-        break;
+        break
       case 'ArrowRight':
-        console.log('I pressed the right arrow :P');
+        console.log('I pressed the right arrow :P')
         if (shooterIndex < 195) {
-          squares[shooterIndex].classList.remove('shooter');
-          squares[shooterIndex + 1].classList.add('shooter');
-          shooterIndex += 1;
+          squares[shooterIndex].classList.remove('shooter')
+          squares[shooterIndex + 1].classList.add('shooter')
+          shooterIndex += 1
         }
-        break;
+        break
       case ' ':
-        console.log('I pressed the space bar :P');
-        audioShoot.play();
-        squares[shooterIndex - width].classList.add('bullet');
+        console.log('I pressed the space bar :P')
+        audioShoot.play()
+        squares[shooterIndex - width].classList.add('bullet')
     }
   }
 
   // stopping spacebar from moving down window screen
 
   document.onkeypress = function (e) {
-    e = e || window.event;
-    var charCode = e.keyCode || e.whichf;
+    e = e || window.event
+    var charCode = e.keyCode || e.whichf
     if (charCode === 32) {
-      e.preventDefault();
-      return false;
+      e.preventDefault()
+      return false
     }
-  };
+  }
 
-  document.addEventListener('keydown', moveShooter);
+  document.addEventListener('keydown', moveShooter)
 }
 
 // game end function
 
 function gameOver() {
-  mainSound.pause();
-
-  clearInterval(interval);
-  const y = document.getElementById('gameover-screen');
+  mainSound.pause()
+  clearInterval(interval)
+  const y = document.getElementById('gameover-screen')
   if (y.style.display === 'none') {
-    y.style.display = 'block';
+    y.style.display = 'block'
   } else {
-    y.style.display = 'none';
+    y.style.display = 'none'
   }
   setTimeout(() => {
-    y.style.display = 'none';
-    const aliens = [0, 2, 4, 6, 8, 10, 12];
+    y.style.display = 'none'
+    const aliens = [0, 2, 4, 6, 8, 10, 12]
 
     function drawAliens() {
-      const squares = Array.from(document.querySelectorAll('.grid div'));
-      aliens.forEach((alien) => squares[alien].classList.add('alien'));
+      const squares = Array.from(document.querySelectorAll('.grid div'))
+      aliens.forEach((alien) => squares[alien].classList.add('alien'))
     }
-    drawAliens();
-  }, 8000);
+    drawAliens()
+  }, 8000)
 }
-
-// document.getElementsByID('gameover-screen').addEventListener('mouseover', function () {
-//   this.mainSound.pause()
-// })
-
-//
-// function audioStop() {
-//   mainSound.pause()
-//   mainSound.currentTime = 0
-//

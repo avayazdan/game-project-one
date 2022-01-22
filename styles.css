@@ -13,7 +13,7 @@
 
 #gamestart-screen {
   margin: auto;
-  margin-top: 50px;
+  margin-top: 150px;
   position: relative;
   width: 50%;
   height: 50%;
@@ -47,8 +47,9 @@
   display: flex;
   position: absolute;
   top: 470px;
-  left: 580px;
+  left: 920px;
   display: none;
+  width: 300px;
 }
 
 @keyframes grow-and-shrink {
