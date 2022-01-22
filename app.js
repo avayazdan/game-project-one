@@ -26,20 +26,24 @@ bruhSound.volume = 1
 
 document.body.addEventListener('mousemove', function () {
   mainSound.play()
+  // mainSound.loop = true
 })
 
-window.addEventListener('keyup', ev => {
+function startGame(ev) {
   if (ev.keyCode === 38) {
+    console.log('I pressed the up arrow')
+    let gameStarted = false
     init()
     const x = document.getElementById('gamestart-screen')
-    if (x.style.display === 'none') {
-      x.style.display = 'block'
-    } else {
-      x.style.display = 'none'
+    x.style.display = 'none'
+    gameStarted = true
+    if (gameStarted) {
+      window.removeEventListener('keyup', startGame)
     }
   }
 }
-)
+window.addEventListener('keyup', startGame)
+
 // window.alert('GAME OVER')
 // game initialise 
 
@@ -106,7 +110,7 @@ function init() {
     if (aliens.some((alien) => alien > 182)) {
       gameOverSound.play()
       bruhSound.play()
-      gameOver()
+      // gameOver()
       gameOverSound.addEventListener('ended', function () {
         gameOver()
       })
@@ -202,14 +206,30 @@ function gameOver() {
   } else {
     y.style.display = 'none'
   }
+  setTimeout(() => {
+    y.style.display = 'none'
+    const aliens = [0, 2, 4, 6, 8, 10, 12]
+
+    function drawAliens() {
+      const squares = Array.from(document.querySelectorAll('.grid div'))
+      aliens.forEach((alien) => squares[alien].classList.add('alien'))
+
+    }
+    drawAliens()
+
+  }, 9000)
 }
 
-// document.getElementsByID('gameover-screen').addEventListener('mouseover', function () {
-//   this.mainSound.pause()
-// })
 
-// set time out function to wait a few seconds and then reinit game , write condition to stop upkey appear ,pause and start game
-// function audioStop() {
-//   this.mainSound.pause()
-//   mainSound.currentTime = 0
-// }
+
+
+
+  // document.getElementsByID('gameover-screen').addEventListener('mouseover', function () {
+  //   this.mainSound.pause()
+  // })
+
+  // set time out function to wait a few seconds and then reinit game , write condition to stop upkey appear ,pause and start game
+  // function audioStop() {
+  //   this.mainSound.pause()
+  //   mainSound.currentTime = 0
+  //
