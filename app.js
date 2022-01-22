@@ -24,10 +24,18 @@ bruhSound.volume = 1
 
 // game start screen function
 
-document.body.addEventListener('mousemove', function () {
+
+document.body.addEventListener('mousemove', mainAudioPlay)
+
+function mainAudioPlay() {
+  let audioPlaying = false
   mainSound.play()
-  // mainSound.loop = true
-})
+  audioPlaying = true
+  if (audioPlaying) {
+    document.body.removeEventListener('mousemove', mainAudioPlay)
+  }
+  // mainSound.loop = true)
+}
 
 function startGame(ev) {
   if (ev.keyCode === 38) {
@@ -110,6 +118,7 @@ function init() {
     if (aliens.some((alien) => alien > 182)) {
       gameOverSound.play()
       bruhSound.play()
+      mainSound.pause()
       // gameOver()
       gameOverSound.addEventListener('ended', function () {
         gameOver()
@@ -199,6 +208,7 @@ function init() {
 // game end function
 
 function gameOver() {
+  mainSound.pause()
   clearInterval(interval)
   const y = document.getElementById('gameover-screen')
   if (y.style.display === 'none') {
@@ -217,19 +227,15 @@ function gameOver() {
     }
     drawAliens()
 
-  }, 9000)
+  }, 8000)
 }
-
-
-
-
 
   // document.getElementsByID('gameover-screen').addEventListener('mouseover', function () {
   //   this.mainSound.pause()
   // })
 
-  // set time out function to wait a few seconds and then reinit game , write condition to stop upkey appear ,pause and start game
+  //
   // function audioStop() {
-  //   this.mainSound.pause()
+  //   mainSound.pause()
   //   mainSound.currentTime = 0
   //
